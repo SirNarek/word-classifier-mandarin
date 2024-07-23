@@ -1,8 +1,9 @@
 1. Introduction
-
+The goal of this repository is to implement python code that does analysis of arbitrary text in Mandarin, extraction of han characters/words and matching to one of the predefined word classes.
 
 2. Word classes
-
 3. Approach
-
 4. Source files
+ - openai_sentence_generator.py: generates sentences in english using gpt4 engine, the prompts requires that the sentences have at least one of the words from the specified word category.
+ - translate_mandarin_separate.py: translates each of generated sentences to mandarin using google translate api
+ 
