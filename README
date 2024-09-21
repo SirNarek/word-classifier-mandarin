@@ -1,10 +1,22 @@
 1. Introduction
-The goal of this repository is to implement python code that does analysis of arbitrary text in Mandarin, extraction of han characters/words and matching to one of the predefined word classes.
+The goal of this repository is to implement a Python-based solution that facilitates the analysis of Mandarin text by extracting Han characters or words and manually matching them to predefined word classes known as "GESTURES." This process helps categorize Mandarin text into meaningful semantic groups, enabling further analysis for applications such as sentiment detection, text mining, or linguistic research. While the system provides automated tools for generating and processing sentences, the final step of categorizing the words into specific GESTURES is performed manually.
 
 2. Word classes
+The word classes, referred to as "GESTURES," are manually defined semantic categories that group words based on their meaning and usage:
+
+    GESTURE_HIGH: Words related to height, elevation, admiration, and positivity, such as "high," "great," and "amazing."
+    GESTURE_QSTN: Words expressing questions or inquiries, like "what," "where," and "how."
+    GESTURE_SELF: Words focused on personal identity, such as "I," "me," "we."
+    GESTURE_YOU: Words addressing others, including various forms of "you" in both formal and informal contexts.
+
+Although the system provides tools to extract and process words, the task of assigning words to the correct GESTURE is done manually, ensuring precise categorization.
+
 3. Approach
+The approach begins by generating English sentences, followed by translation, tokenization, and manual classification. First, the Chinese.py script generates English sentences containing specific target words using the OpenAI API. These sentences are translated into Mandarin using Google Translate and then tokenized using Stanza, which breaks down the Mandarin sentences into individual characters or words. Once tokenized, the Mandarin tokens are retranslated back into English for easier identification. At this point, you manually review each token, cross-referencing it with predefined word lists, and categorize it into one of the GESTURES (e.g., GESTURE_HIGH, GESTURE_QSTN). This manual step ensures that each word is placed in the correct semantic category for further analysis.
+
+
 4. Source files
- - openai_sentence_generator.py: generates sentences in english using gpt4 engine, the prompts requires that the sentences have at least one of the words from the specified word category.
- - translate_mandarin_separate.py: translates each of generated sentences to mandarin using google translate api and tokenizes it using stanza library
- - translate_to_english.py: translates the tokens of the sentences to english using google translate aptokens of the sentences to english using google translate aptokens of the sentences to english using google translate api
+     Chinese.py: This script generates English sentences using the OpenAI API. These sentences contain specific target words, such as "you" or "your," which are important for further analysis. The output of this script is a set of sentences that will be processed in the next steps.
+
+    translate_mandarin_separate.py: This script manages the translation and tokenization of the sentences. It translates the generated sentences from English to Mandarin using the Google Translate API and then tokenizes the Mandarin sentences using Stanza. The tokenized words are retranslated into English, making it easier for you to manually categorize them into the predefined GESTURES. This script is essential for breaking down the sentences into manageable tokens for manual classification.
  
